@@ -1,0 +1,9 @@
+digraph "C:/Windows/System32" {
+  compound=true
+  node [ fontsize="10", fontname="Helvetica"];
+  edge [ labelfontsize="10", labelfontname="Helvetica"];
+  subgraph clusterdir_a67a73c2d68c1a16cb1ec52de74dbd35 {
+    graph [ bgcolor="#ddddee", pencolor="black", label="Windows" fontname="Helvetica", fontsize="10", URL="dir_a67a73c2d68c1a16cb1ec52de74dbd35.html"]
+  dir_10d7e00271d6030539a605c32c6e1e41 [shape=box, label="System32", style="filled", fillcolor="#eeeeff", pencolor="black", URL="dir_10d7e00271d6030539a605c32c6e1e41.html"];
+  }
+}
