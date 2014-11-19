@@ -196,25 +196,25 @@ void problem10();
     }
     void problem5()
     {
+        //instances for the inputted items
         RetailItem a, b, c;
-        cout<<"Item 1"<<endl;
+        cout<<"--Input for Item 1\n";
         a.getinfo();
-        cout<<"Item 2"<<endl;
+        cout<<"--Input for Item 2\n";
         b.getinfo();
-        cout<<"Item 3"<<endl;
+        cout<<"--Input for Item 3\n";
         c.getinfo();
 
         //Display results
         cout<<"Item #"<<setw(15)<<"Description"<<setw(10)<<"Units"<<setw(10)
             <<"Price\n";
         cout<<"--------------------------------------------------\n";
-        cout<<"Item 1"<<setw(10)<<a.getdesc()<<setw(10)<<a.getunits()<<setw(10)
-            <<fixed<<setprecision(2)<<a.getprice()<<endl;
-        cout<<"Item 2"<<setw(10)<<b.getdesc()<<setw(10)<<b.getunits()<<setw(10)
-            <<fixed<<setprecision(2)<<b.getprice()<<endl;
-        cout<<"Item 3"<<setw(10)<<c.getdesc()<<setw(10)<<c.getunits()<<setw(10)
-            <<fixed<<setprecision(2)<<c.getprice()<<endl;
-        cout<<endl;
+        cout<<"    #1"<<setw(10)<<a.getdesc()<<setw(10)<<a.getunits()<<setw(10)
+            <<fixed<<setprecision(2)<<"$ "<<a.getprice()<<endl;
+        cout<<"    #2"<<setw(10)<<b.getdesc()<<setw(10)<<b.getunits()<<setw(10)
+            <<fixed<<setprecision(2)<<"$ "<<b.getprice()<<endl;
+        cout<<"    #3"<<setw(10)<<c.getdesc()<<setw(10)<<c.getunits()<<setw(10)
+            <<fixed<<setprecision(2)<<"$ "<<c.getprice()<<endl;
     }
     void problem6()
     {
