@@ -35,7 +35,7 @@ OBJECTDIR=${CND_BUILDDIR}/${CND_CONF}/${CND_PLATFORM}
 
 # Object Files
 OBJECTFILES= \
-	${OBJECTDIR}/Pro_2_withSort.o
+	${OBJECTDIR}/Vo_Kevin_Project_2_48130.o
 
 
 # C Compiler Flags
@@ -56,16 +56,16 @@ LDLIBSOPTIONS=
 
 # Build Targets
 .build-conf: ${BUILD_SUBPROJECTS}
-	"${MAKE}"  -f nbproject/Makefile-${CND_CONF}.mk ${CND_DISTDIR}/${CND_CONF}/${CND_PLATFORM}/pro_2_withsort.exe
+	"${MAKE}"  -f nbproject/Makefile-${CND_CONF}.mk ${CND_DISTDIR}/${CND_CONF}/${CND_PLATFORM}/vo_kevin_project_2_48130.exe
 
-${CND_DISTDIR}/${CND_CONF}/${CND_PLATFORM}/pro_2_withsort.exe: ${OBJECTFILES}
+${CND_DISTDIR}/${CND_CONF}/${CND_PLATFORM}/vo_kevin_project_2_48130.exe: ${OBJECTFILES}
 	${MKDIR} -p ${CND_DISTDIR}/${CND_CONF}/${CND_PLATFORM}
-	${LINK.cc} -o ${CND_DISTDIR}/${CND_CONF}/${CND_PLATFORM}/pro_2_withsort ${OBJECTFILES} ${LDLIBSOPTIONS}
+	${LINK.cc} -o ${CND_DISTDIR}/${CND_CONF}/${CND_PLATFORM}/vo_kevin_project_2_48130 ${OBJECTFILES} ${LDLIBSOPTIONS}
 
-${OBJECTDIR}/Pro_2_withSort.o: Pro_2_withSort.cpp 
+${OBJECTDIR}/Vo_Kevin_Project_2_48130.o: Vo_Kevin_Project_2_48130.cpp 
 	${MKDIR} -p ${OBJECTDIR}
 	${RM} "$@.d"
-	$(COMPILE.cc) -O2 -MMD -MP -MF "$@.d" -o ${OBJECTDIR}/Pro_2_withSort.o Pro_2_withSort.cpp
+	$(COMPILE.cc) -O2 -MMD -MP -MF "$@.d" -o ${OBJECTDIR}/Vo_Kevin_Project_2_48130.o Vo_Kevin_Project_2_48130.cpp
 
 # Subprojects
 .build-subprojects:
@@ -73,7 +73,7 @@ ${OBJECTDIR}/Pro_2_withSort.o: Pro_2_withSort.cpp
 # Clean Targets
 .clean-conf: ${CLEAN_SUBPROJECTS}
 	${RM} -r ${CND_BUILDDIR}/${CND_CONF}
-	${RM} ${CND_DISTDIR}/${CND_CONF}/${CND_PLATFORM}/pro_2_withsort.exe
+	${RM} ${CND_DISTDIR}/${CND_CONF}/${CND_PLATFORM}/vo_kevin_project_2_48130.exe
 
 # Subprojects
 .clean-subprojects:

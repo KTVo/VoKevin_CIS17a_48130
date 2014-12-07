@@ -1,218 +1,26 @@
 /* 
- * File:   Project_1.cpp
+ * File:   PlayerInfo.h
  * Author: Kevin Vo
- * Course: CSC-17A (48130)
- * Created on October 12, 2014, 2:11 PM
+ *
+ * Created on December 6, 2014, 11:19 AM
  */
-#include <cstdlib>
-#include <iostream>
-#include <ctime>
-#include <iostream>
-#include <fstream>
-#include <cstdio>
-#include <cmath>
-#include <iomanip>
-#include <cstring>
 
+#ifndef PLAYERINFO_H
+#define	PLAYERINFO_H
 using namespace std;
 
-class Time{ 
-protected:
-	int hour;
-	int min;
-	int sec;
-public:
-	Time(int h, int m, int s)
-		{ hour = h; min = m; sec = s; }
-	void setTime(int h, int m, int s)
-		{ hour = h; min = m; sec = s; }
-	int getHour()
-		{ return hour; }
-	int getMin()
-		{ return min; }
-	int getSec()
-		{ return sec; }
-};
 
-//Example of inheritence where class ForeignTime is inheriting from class Time
-class ForeignTime:public Time{
-private:
-	int foreignHr;//Contains 24hr format
-        int ForSeconds;//Contains secs in standard form
-public:
-	ForeignTime(int h,int s):Time(0, 0, 0)
-		{ setTime(h, s); }
-	void setTime(int h,int s)
-	{ 
-                foreignHr = h;
-                ForSeconds = s;
-        	Time::setTime(ForeToStandHr(h), ForToStandMin(h),s);
-	}
-
-        //converts hours
-	int ForeToStandHr(int fore)
-	{
-		fore /= 100;
-		if(fore > 12){
-                    return fore - 12;
-                }        
-		else{
-                    return fore;
-                }
-	}
-
-        //converts mins
-	int ForToStandMin(int fore){
-		fore %= 100; 
-		fore *= 0.6; 
-        return fore;}
-
-        //Displays the time used foreign countries
-	void getHour(){ 
-            cout<<"24-hr Time: "<<foreignHr<<" hours.\n"; 
-        }
-
-        //Displays the time format used in the U.S.
-	void getStandHr(){ 
-
-
-
-
-
-            cout<<setfill('0')<<"12-hr Standard Time: "<<setw(2)<<Time::getHour()
-                <<":"<<setw(2)<<getMin()<<endl; 
-        }
-
-};
-
-class TimeClock:public ForeignTime{
-    private:
-	int start; 
-        int stop;
-    public:
-	TimeClock(int time1,int time2):ForeignTime(abs(time1 - time2), 0)
-		{ start = time1; stop = time2;}
-	void display(){
-		getHour();
-		getStandHr();
-	}
-
-};
-
-
-template <class T>
-class SortableVector{
-    private:
-        T *ptrArray;//Points to the array
-        int arraySize;
-        void memError();//Handles memory allocation errors
-        void subError();//Handles subscripts that are out of range
-        void quickSort(T *, int, int);//Uses quicksort algorithm to sort
-        //Obtains mid. value so that # can be sorted around it
-        int partition(T *, int, int);
-    public:
-        SortableVector(){ptrArray = 0; arraySize = 0;}
-        SortableVector(int);
-        SortableVector(const SortableVector &);
-        ~SortableVector();
-        int size() const{return arraySize;}
-        T getValue(int position);
-        void sorter();
-        T &operator[] (const int &);
-};
-
-    
-template <class T>
-//Defines the size of array and allocates memory while checking for neg. values
-SortableVector<T>::SortableVector(int size){
-    //set array size and allocate memory
-    arraySize = size;
-    try{
-        ptrArray = new T[size];
-    }
-    catch (bad_alloc){
-        memError();
-    }
-
-    for(int count = 0; count < arraySize; count++){
-        *(ptrArray + count) = 0;
-    }
-}
-
-template <class T>
-SortableVector<T>::SortableVector(const SortableVector &c){
-    arraySize = c.arraySize;
-    ptrArray = new T [arraySize];
-    if(ptrArray == 0){memError();}
-    for(int count = 0; count < arraySize; count++){
-        *(ptrArray + count) = *(c.ptrArray + count);
-    }
-}
-
-template <class T>
-    SortableVector<T>::~SortableVector(){
-        if(arraySize > 0){delete [] ptrArray;}
-}
-
-template <class T>
-//Displays and ends the program when there's a negative value
-void SortableVector<T>::memError(){
-    cout<<"Error: The amount entered must be a positive.\n";
-    exit(EXIT_FAILURE);}
-
-//Displays and ends the program when the subscript is out of range
-template <class T>
-void SortableVector<T>::subError(){
-    cout<<"Error: The subscript is out of range.\n";
-    exit(EXIT_FAILURE);}
-
-//Gives the array values and checks if the subscript is in range.
-template <class T>
-T SortableVector<T>::getValue(int elem){
-    if(elem < 0 || elem >= arraySize){subError();}
-return ptrArray[elem];}
-
-template <class T>
-T &SortableVector<T>::operator[](const int &elem){
-    if(elem < 0 || elem >= arraySize){subError();}
-return ptrArray[elem];}
-
-template <class T>
-void SortableVector<T>::sorter(){ quickSort(ptrArray, 0, arraySize); }
-
-//quicksort uses quicksort algorithm to sort the values
-template <class T>
-void SortableVector<T>::quickSort(T *ptrArray, int start, int end){
-    int middle;
-    if(start < end){
-        middle = partition(ptrArray, start, end);
-        quickSort(ptrArray, start, middle);
-        quickSort(ptrArray, middle+1, end);
-    }
-return;}
-
-    //Selects and return the middle value
-    template <class T>
-    int SortableVector<T>::partition(T *ptrArray, int start, int end){
-        T arrStart = ptrArray[start], holder;
-        int com = (start - 1), mid = (end + 1);
-
-        do{
-            do{ mid--; }while (arrStart > ptrArray[mid]);
-            do{ com++; }while (arrStart < ptrArray[com]);
-            if(com < mid){
-                holder = ptrArray[com];
-                ptrArray[com] = ptrArray[mid];
-                ptrArray[mid] = holder;
-            }
-        }while(com < mid);
-return mid;}
+//******************************************************************************
+//Main game Structure + Functions
+//
+//******************************************************************************
 
 struct Play{
     int *playerDamage; 
     int playerHealth;
     char userName[];
 };
+
 //Function Prototypes
 int combatBoss(Play *);//Initiates boss battle
 
@@ -236,181 +44,6 @@ void congratDisplay();
 
 //CONSTANT global variable for in-game decrpytion
 const int inputCap = 4;
-
-int main(int argc, char** argv){
-    //Allocates memory so that the members of the structure can be used
-    Play *c = new Play;
-    int dmg = 8, endgameInput;
-    c->playerDamage = &dmg;
-    c->playerHealth = 100;
-    char action;//Input for the player to play the game
-
-    //Prompts the player about the game
-    cout<<"Warriors' Extravaganza is an Roleplaying Game that soley depends on "
-        <<"repetition until you understand the game.\nTo play, each turn you "
-        <<"are given a chance to fight a boss or one of its minions. Each "
-        <<"minion fight will give you a boost damage and health points.\n"
-        <<"Hit enter to continue...";
-    cin.ignore();
-    //uses structure member "userName" to store name
-    cout<<"Enter the name of your character: ";
-    cin.get(c->userName, 10);
-    char *namePtr;
-
-    //Assigns a pointer to an element
-    namePtr = c->userName;
-   
-
-    cout<<"\nHello.\n";
-    cout<<"Let's begin!\n";
-    //Uses member "userName" and *playerDamage to display string
-    cout<<"Name: ";
-    
-    //Pointer Notation example
-    for(int i=0; i < 6; i++){
-        cout<<*(namePtr+i);
-    }
-    cout<<endl;
-    cout<<"Here are your current stats:\n------------------------------\n"
-        <<"Health: "<<c->playerHealth<<endl<<"Current Damage: "<<
-            *c->playerDamage<<endl<<endl<<"Now hit enter to fight...";
-    cin.ignore();
-    cin.get();
-
-    //Calls for minion battle
-    minion(action, c);
-
-    //Calls for decryption to boss
-    boss();
-
-    //Calls for boss battle
-    combatBoss(c);
-
-    //Displays congrats message
-    congratDisplay();
-
-    //Asks to write/read a .txt or end the game
-    cout<<"Player Input: ";
-    cin>>endgameInput;
-    
-    if(endgameInput == 1){
-        int timeChoice;//stores
-        int stdHr;//stores
-        int stdMin;//stores
-        int stdSec;//stores
-        int foreInTime;
-
-        cout<<"\nChoose the time format.\n";
-        cout<<"*****************************\n";
-        cout<<"Enter 1 for 24-HR Format.\n";
-        cout<<"Enter 2 for Standard Format.\n";
-        cout<<"User Input: ";
-        cin>>timeChoice;
-
-        while(timeChoice == 0 || timeChoice > 2){
-            cout<<"Your input was invalid.\n";
-            cout<<"Please select the format you wish to use.\n";
-            cout<<"\nChoose the time format.\n";
-            cout<<"*****************************\n";
-            cout<<"Enter 1 for 24-HR Format.\n";
-            cout<<"Enter 2 for Standard Format.\n";
-            cout<<"User Input: ";
-            cin>>timeChoice;
-        }
-        
-        ofstream myfile ("stats.txt");
-        if (myfile.is_open()){
-        myfile<<"\n\n---File Content---\n";
-            if (timeChoice == 2){
-                cout<<"Enter the following for the standard time...\n";
-                cout<<"Hour: ";
-                cin>>stdHr;
-                cout<<"Minute: ";
-                cin>>stdMin;
-                cout<<"Second: ";
-                cin>>stdSec;
-                myfile<<"Time: "<<stdHr<<":"<<stdMin<<":"<<stdSec<<endl;
-            }
-
-            else if(timeChoice == 1){
-        
-
-                cout<<"Enter Time in 24-hr format: ";
-                cin>>foreInTime;
-
-                try{
-                    if(foreInTime > 2359 || foreInTime < 0){
-                    throw 1756;
-                    }
-
-                    TimeClock time(foreInTime, 0);
-                    time.display();
-                    cout<<endl;
-
-                }
-                catch(int x){
-                    cout<<endl<<"Error: "<<x<<endl;
-                    cout<<"Input Validation: The class shouldn't accept hours"
-                        <<" greater than 2359 or less than 0.\n";
-                }
-            }
-
-       
-
-
-
-        myfile<<"Name: "<<c->userName<<endl;
-        myfile<<"Health: "<<c->playerHealth<<endl;
-        myfile<<"Damage: "<<*c->playerDamage<<endl;
-        myfile.close();
-
-
-
-        int const arrSize = 3;//holds the amount of elements for the array
-        int sortStat[arrSize];//sorts the elements so that it can be sorted
-
-        sortStat[0] = 1;
-        sortStat[1] = 2;
-        sortStat[2] = 3;
-
-        SortableVector<int> vect(arrSize);
-    
-        //Loops and assign inputs
-        for(int count = 0; count < arrSize; count++){
-            cout<<"Digit #"<<count + 1<<": ";
-
-            vect[count] = sortStat[count];
-        }
-
-        //Sorts and then displays the result
-        vect.sorter();
-        cout<<"\n\tResult\n---------------------------\n";
-        for(int count = 0; count < arrSize; count++){
-        cout<<"\t"<<vect.getValue(count)<<endl;
-        }
-
-
-
-
-
-
-        cout<<"\nGoodbye!\n";
-        }
-
-        else cout<<"Cannot open file.";}
-    else if(endgameInput == 2){
-        string line;
-        ifstream myfile ("stats.txt");
-        if (myfile.is_open()){
-            while(getline (myfile,line)){
-                cout<<line<<'\n';}
-             myfile.close();
-            cout<<"\nGoodbye!\n";}//Closes the file
-  else cout << "Cannot open file";}
-    else{cout<<"\nBonne journée!\n";}
-
-        delete[] namePtr;//cleans up
-    return 0;}
 
 //Function for duing gameplay
 int minion(char action, struct Play *c){
@@ -438,6 +71,7 @@ int minion(char action, struct Play *c){
             *c->playerDamage += 90;
             minionHealth = minionHealth - *c->playerDamage;
             c->playerHealth = c->playerHealth - 25; 
+
             cout<<"\nYour Health: "<<c->playerHealth<<endl;
             cout<<"Your health and damage is boosted by 90 points.\n";
             cout<<overDose<<" more uses of health before overdose.\n"; 
@@ -523,7 +157,7 @@ void duringBattle(){
 void endBattle(){
     cout<<"\nCongratulations! You have gotten your kill! Now "
         <<"enter 'q' to continue more monsters and get stronger "
-        <<"or enter 'w' to\ngo straight to the boss.\n\n";
+        <<"or enter 'w' to go straight to the boss.\n\n";
 }
 
 //Congratulates and ask for decryption code
@@ -590,14 +224,40 @@ void decryptPrompt(){
     cout<<"Enter in the code.\n";
     cout<<"Input Data: ";
     cin>>digitInput;
-        cout<<"\nOh no there seems to be an error with the decoder!\n";
-        cout<<"Now ";
 
-    do{
+
+    int const arrSize = 5;//holds the amount of elements for the array
+    int sortStat[arrSize];//sorts the elements so that it can be sorted
+
+    //Sorts the value for the decoding time
+    sortStat[0] = 13;
+    sortStat[1] = 64;
+    sortStat[2] = 34;
+    sortStat[3] = 19;
+    sortStat[4] = 6;
+
+    SortableVector<int> vect(arrSize);
+    
+    //Loops and assign inputs
+    for(int count = 0; count < arrSize; count++){
+         vect[count] = sortStat[count];
+    }
+
+    //Sorts and then displays the result
+    vect.sorter();
+
+    cout<<"Decoding in ";
+    for(int count = 0; count < arrSize; count++){
+        cout<<vect.getValue(count)<<" secs... ";
+    }
+    cout<<endl;
+    cout<<"\nOh no there seems to be an error with the decoder!\n";
+
+    while(digitInput != 1234){
         cout<<"\nPlease re-enter '1234' (without the ' ').\n";
         cout<<"Player Input: ";
         cin>>digitInput;
-    }while(digitInput != 1234);
+    }
 
     for (int count = 3; count >= 0; --count) {
         inputPtr[count] = (digitInput % 10);
@@ -628,11 +288,13 @@ void decryptPrompt(){
 
     //code input validation
     if (decrptInput != 7610){
+        //This prompts for reinput for the decrpted number if input is wrong
         cout<<"\nYou have inputted the wrong code...\n";
         cout<<"Please try again... (the code is 7610)\n";
         cout<<"\nUser Input: ";
         cin>>decrptInput;
     }
+        //Alerts the player that they are about to fight the boss
         cout<<"\nThe doors are opening. Please hit enter to continue...";
         cin.ignore();
         cin.get();
@@ -640,7 +302,7 @@ void decryptPrompt(){
 
 //Calculates and prompts the boss battle
 int combatBoss(struct Play *c){
-    int bossHealth = 1000000, bossDamage = 100;
+    int bossHealth = 1000000, bossDamage = 100; //stores status for boss
     char playerInput;
     c-> playerHealth;
     c-> playerDamage;
@@ -659,6 +321,7 @@ int combatBoss(struct Play *c){
         bossDamage = (bossDamage * 10);
         c-> playerHealth = c-> playerHealth - bossDamage;
 
+        //Displays after every turn
         cout<<"\n---Boss' Status---:\n";
         cout<<"\tBoss' Health: "<<bossHealth<<endl;
         cout<<"\tBoss' Damage: "<<bossDamage<<endl;
@@ -695,6 +358,7 @@ int combatBoss(struct Play *c){
 return 0;}
 
 //Displays congratulations for beating the boss
+//It still congratulate you even if you didn't win
 void congratDisplay(){
         cout<<"**************************************************************";
         cout<<"************\n*";
@@ -703,9 +367,15 @@ void congratDisplay(){
         cout<<"**************************************************************";
         cout<<"************\n";
 
+        //The selection menu at the end of the game asking if they'd like to
+        //document their status or view the previous status by opening a .txt
         cout<<"\nNow what would you like to do?\n";
         cout<<"---------------------------------------\n";
         cout<<"Enter 1 to write your status to a text file.\n";
         cout<<"Enter 2 to view your last status.\n";
+        cout<<"Enter 3 to enter for bonus features.\n";
         cout<<"Enter 0 to exit game.\n";
 }
+
+#endif	/* PLAYERINFO_H */
+
