@@ -1,0 +1,15 @@
+ * Project 2 Checklist:
+ * 1) Dynamic Array -> int sortStat[arrSize]; in Sort.h and char userName[] inPlayerInfo.h	//sorts name as c-string
+ * 2) Read & Write -> Lines 46 - 103 in SavePrompt.h	//Writes or reads status from "stat.txt"
+ * 3) Classes -> Bonus.h, BonusBoss.h, Timing.h, Sort.h	   //All uses classes
+ * 4) Inheritance - > class TimeClock:public ForeignTime in Timing.h	//Accepts time values and display them
+ * 5) Polymorphism -> Line 40 and down in BonusBoss.h virtual void attack(){}	//Uses the function twice with different outputs
+ * 6) Template -> template <class T>class SortableVector in Sort.h utilizes a class	//Accepts value of an array to sort and slimutate a countdown
+ *
+ * Project 1 Checklist: 
+ * 1) Pointers -> *playerDamage, *inputDecrypting	//Use to point to value of player's damage and to point to value to be Decrypted
+ * 2) Functions with Struct -> int minion(char action, struct Play *c) in PlayerInfo.h	//function working a structure to simulate battle
+ * 3) Pointers with Arrays -> namePtr = c->userName; in main.cpp      //Pointer pointing to a c-string
+ * 4) Array of Structures -> char userName[10]; (INTERNALLY) in PlayerInfo.h  //Array in side a structure
+	                     namePtr = c->userName; (EXTERNALLY) in main.cpp //Array of a stucture that is outside 
+ * 5) Pointer Notation -> *(namePtr+i) in main.cpp  //displays name with pointer notation
