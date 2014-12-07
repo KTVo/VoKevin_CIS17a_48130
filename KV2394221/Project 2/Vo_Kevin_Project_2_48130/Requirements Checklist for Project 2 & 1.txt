@@ -13,3 +13,5 @@
  * 4) Array of Structures -> char userName[10]; (INTERNALLY) in PlayerInfo.h  //Array in side a structure
 	                     namePtr = c->userName; (EXTERNALLY) in main.cpp //Array of a stucture that is outside 
  * 5) Pointer Notation -> *(namePtr+i) in main.cpp  //displays name with pointer notation
+ * 6) Pointer with Structures-> int *playerDamage; (INTERNAL)
+	                	PlayerInfo.h shows an example with pointer with structures EXTERNALLY.

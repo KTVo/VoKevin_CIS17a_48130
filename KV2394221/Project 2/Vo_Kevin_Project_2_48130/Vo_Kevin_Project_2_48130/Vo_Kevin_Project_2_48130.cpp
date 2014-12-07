@@ -20,9 +20,10 @@
  *    in PlayerInfo.h
  * 3) Pointers with Arrays -> namePtr = c->userName; in main.cpp
  * 4) Array of Structures -> char userName[10]; (INTERNALLY) in PlayerInfo.h
-	                     namePtr = c->userName; (EXTERNALLY) in main.cpp
+ *	                         namePtr = c->userName; (EXTERNALLY) in main.cpp
  * 5) Pointer Notation -> *(namePtr+i) in main.cpp
-
+ * 6) Pointer with Structures-> int *playerDamage; (INTERNAL)
+ *	  PlayerInfo.h shows an example with pointer with structures EXTERNALLY.
  */
 
 #include <cstdlib>
