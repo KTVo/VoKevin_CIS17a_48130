@@ -3,5 +3,5 @@
 ---File Content---
 Time: 1600
 Name: Dave
-Health: -11575
-Damage: 23200
+Health: -7915
+Damage: 418

@@ -35,7 +35,9 @@ OBJECTDIR=${CND_BUILDDIR}/${CND_CONF}/${CND_PLATFORM}
 
 # Object Files
 OBJECTFILES= \
-	${OBJECTDIR}/Vo_Kevin_Project_2_48130.o
+	${OBJECTDIR}/BonusBoss.o \
+	${OBJECTDIR}/Timing.o \
+	${OBJECTDIR}/main.o
 
 
 # C Compiler Flags
@@ -62,10 +64,20 @@ ${CND_DISTDIR}/${CND_CONF}/${CND_PLATFORM}/vo_kevin_project_2_48130.exe: ${OBJEC
 	${MKDIR} -p ${CND_DISTDIR}/${CND_CONF}/${CND_PLATFORM}
 	${LINK.cc} -o ${CND_DISTDIR}/${CND_CONF}/${CND_PLATFORM}/vo_kevin_project_2_48130 ${OBJECTFILES} ${LDLIBSOPTIONS}
 
-${OBJECTDIR}/Vo_Kevin_Project_2_48130.o: Vo_Kevin_Project_2_48130.cpp 
+${OBJECTDIR}/BonusBoss.o: BonusBoss.cpp 
 	${MKDIR} -p ${OBJECTDIR}
 	${RM} "$@.d"
-	$(COMPILE.cc) -g -MMD -MP -MF "$@.d" -o ${OBJECTDIR}/Vo_Kevin_Project_2_48130.o Vo_Kevin_Project_2_48130.cpp
+	$(COMPILE.cc) -g -MMD -MP -MF "$@.d" -o ${OBJECTDIR}/BonusBoss.o BonusBoss.cpp
+
+${OBJECTDIR}/Timing.o: Timing.cpp 
+	${MKDIR} -p ${OBJECTDIR}
+	${RM} "$@.d"
+	$(COMPILE.cc) -g -MMD -MP -MF "$@.d" -o ${OBJECTDIR}/Timing.o Timing.cpp
+
+${OBJECTDIR}/main.o: main.cpp 
+	${MKDIR} -p ${OBJECTDIR}
+	${RM} "$@.d"
+	$(COMPILE.cc) -g -MMD -MP -MF "$@.d" -o ${OBJECTDIR}/main.o main.cpp
 
 # Subprojects
 .build-subprojects:

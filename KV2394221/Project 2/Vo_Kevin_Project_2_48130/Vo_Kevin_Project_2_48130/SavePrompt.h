@@ -11,6 +11,7 @@ using namespace std;
 
 #include "Bonus.h"
 #include "BonusBoss.h"
+#include "BonusBoss.cpp"
 
 //******************************************************************************
 //Read and Write Example

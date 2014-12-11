@@ -18,7 +18,9 @@
     <logicalFolder name="SourceFiles"
                    displayName="Source Files"
                    projectFiles="true">
-      <itemPath>Vo_Kevin_Project_2_48130.cpp</itemPath>
+      <itemPath>BonusBoss.cpp</itemPath>
+      <itemPath>Timing.cpp</itemPath>
+      <itemPath>main.cpp</itemPath>
     </logicalFolder>
     <logicalFolder name="TestFiles"
                    displayName="Test Files"
@@ -69,7 +71,11 @@
             tool="3"
             flavor2="0">
       </item>
-      <item path="Vo_Kevin_Project_2_48130.cpp" ex="false" tool="1" flavor2="0">
+      <item path="BonusBoss.cpp" ex="false" tool="1" flavor2="0">
+      </item>
+      <item path="Timing.cpp" ex="false" tool="1" flavor2="0">
+      </item>
+      <item path="main.cpp" ex="false" tool="1" flavor2="0">
       </item>
     </conf>
     <conf name="Release" type="1">
@@ -119,7 +125,11 @@
             tool="3"
             flavor2="0">
       </item>
-      <item path="Vo_Kevin_Project_2_48130.cpp" ex="false" tool="1" flavor2="0">
+      <item path="BonusBoss.cpp" ex="false" tool="1" flavor2="0">
+      </item>
+      <item path="Timing.cpp" ex="false" tool="1" flavor2="0">
+      </item>
+      <item path="main.cpp" ex="false" tool="1" flavor2="0">
       </item>
     </conf>
   </confs>
